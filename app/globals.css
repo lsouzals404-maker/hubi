@@ -1,0 +1,36 @@
+/* Reset básico moderno */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-family-base);
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Container padrão */
+.main-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
