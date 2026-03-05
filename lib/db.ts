@@ -6,17 +6,15 @@ declare global {
 }
 
 export const pool =
-  env.databaseUrl
-    ? global.__pgPool ??
-      new Pool({
-        connectionString: env.databaseUrl,
-        ssl:
-          process.env.NODE_ENV === "production"
-            ? { rejectUnauthorized: false }
-            : false,
-      })
-    : null;
+  global.__pgPool ??
+  new Pool({
+    connectionString: env.databaseUrl ?? undefined,
+    ssl:
+      process.env.NODE_ENV === "production"
+        ? { rejectUnauthorized: false }
+        : false,
+  });
 
-if (env.databaseUrl && !global.__pgPool && pool) {
+if (!global.__pgPool) {
   global.__pgPool = pool;
 }
