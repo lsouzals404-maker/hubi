@@ -1,0 +1,43 @@
+.adminLayout {
+  display: flex;
+  min-height: 100vh;
+  background: #0a0e17;
+  color: white;
+}
+
+.sidebar {
+  width: 220px;
+  background: #111827;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  color: var(--color-primary);
+  margin-bottom: 30px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #e5e7eb;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.menu a:hover {
+  background: #1f2937;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  background: #0a0e17;
+}
