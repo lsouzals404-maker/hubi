@@ -42,7 +42,7 @@ export default function TenantEquilibrioDosPes({ tenant }: { tenant: Tenant }) {
 
   const gallery = useMemo<StarImage[]>(
     () => [
-      { src: "/tenants/equilibrio-dos-pes/gallery/01.jng" },
+      { src: "/tenants/equilibrio-dos-pes/gallery/01.png" },
       { src: "/tenants/equilibrio-dos-pes/gallery/02.jpg" },
       { src: "/tenants/equilibrio-dos-pes/gallery/03.jpg" },
       { src: "/tenants/equilibrio-dos-pes/gallery/04.jpg" },
