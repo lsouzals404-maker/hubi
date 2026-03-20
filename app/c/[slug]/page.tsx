@@ -3,9 +3,10 @@ import type { Metadata } from "next";
 import { getTenantBySlug } from "@/lib/tenants";
 import type { Tenant } from "@/types/tenant";
 
-// Layouts (crie esses componentes depois)
+// Layouts
 import TenantDefault from "@/components/tenants/default";
 import TenantEquilibrioDosPes from "@/components/tenants/equilibrio-dos-pes";
+import TenantBarbeariaLuizGustavo from "@/components/tenants/barbearia-luiz-gustavo";
 
 /**
  * Faz o PWA carregar o manifest do comércio correto,
@@ -37,23 +38,30 @@ export default async function TenantPage({
 
   if (!tenant) notFound();
 
-  // Mapa de layouts específicos por slug (quando você quiser customizar)
+  // Mapa de layouts específicos por slug
   const layoutMap: Record<string, (props: { tenant: Tenant }) => JSX.Element> = {
     "equilibrio-dos-pes": TenantEquilibrioDosPes,
+    "barbearia-do-luiz-gustavo": TenantBarbeariaLuizGustavo,
   };
 
   const Layout = layoutMap[tenant.slug] ?? TenantDefault;
+
+  // Sugestão de cores para a Barbearia (Predominantemente Preta)
+  // Se o tenant vier do banco com essas cores, elas serão aplicadas.
+  // Se você quiser forçar cores específicas aqui para esse slug:
+  const themeColor = tenant.slug === "barbearia-do-luiz-gustavo" ? "#D4AF37" : tenant.themeColor; // Dourado para contraste
+  const backgroundColor = tenant.slug === "barbearia-do-luiz-gustavo" ? "#0A0A0A" : tenant.backgroundColor; // Preto profundo
 
   return (
     <main className="main-container">
       {/* Tema dinâmico por comércio (cores e background) */}
       <style>{`
         :root {
-          --color-primary: ${tenant.themeColor};
-          --color-background: ${tenant.backgroundColor};
+          --color-primary: ${themeColor};
+          --color-background: ${backgroundColor};
+          --color-text: ${tenant.slug === "barbearia-do-luiz-gustavo" ? "#FFFFFF" : "inherit"};
         }
       `}</style>
-
       <Layout tenant={tenant} />
     </main>
   );
